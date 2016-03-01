@@ -2,7 +2,7 @@ var Todo = require('./models/Todo');
 
 module.exports = function(app) {
 
-    // API route to get all todos
+    // Get all todos
     app.get('/api/todos', function(req, res) {
         Todo.find(function(err, todos) {
             if (err) {
@@ -12,7 +12,7 @@ module.exports = function(app) {
         });
     });
 
-    // API route to create a new todo
+    // Create a new todo
     app.post('/api/todos', function(req, res) {
         Todo.create({
             text: req.body.text,
@@ -22,12 +22,10 @@ module.exports = function(app) {
                 res.send(err);
             }
             res.json(todo);
-
-
         });
     });
 
-    // API route to delete a todo
+    // Delete a todo
     app.delete('/api/todos/:todo_id', function(req, res) {
         Todo.remove({
             _id: req.params.todo_id
