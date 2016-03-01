@@ -1,7 +1,7 @@
 var Todo = require('./models/Todo');
 
 module.exports = function(app) {
-    
+
     // API route to get all todos
     app.get('/api/todos', function(req, res) {
         Todo.find(function(err, todos) {
